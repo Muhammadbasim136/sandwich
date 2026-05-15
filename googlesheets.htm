@@ -331,7 +331,6 @@
     footer { background: var(--dark); text-align: center; padding: 24px; font-size: .78rem; color: rgba(255,255,255,.35); }
     footer strong { color: rgba(255,255,255,.65); }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -603,7 +602,6 @@
 </footer>
 
 <script>
-emailjs.init('RAZZ9Shc4dLc7U_C4');
 
   // ===== TIMING CHECK =====
   function checkTiming() {
@@ -675,15 +673,11 @@ const isOpen = hour >= 13 || hour < 2;
     input.readOnly = true;
     document.getElementById('voucherApplyBtn').disabled = true;
 
-    // const discountAmt = Math.round(subtotal * voucher.discount / 100);
-    // showVoucherMsg(
-    //   `✅ Voucher apply ho gaya! Aap ne Rs ${discountAmt.toLocaleString()} bachaye 🎉 <button class="voucher-remove-btn" onclick="removeVoucher()">Remove</button>`,
-    //   'success'
-    // );
+    const discountAmt = Math.round(subtotal * voucher.discount / 100);
     showVoucherMsg(
-  `✅ Voucher apply ho gaya! 🎉 <button class="voucher-remove-btn" onclick="removeVoucher()">Remove</button>`,
-  'success'
-);
+      `✅ Voucher apply ho gaya! Aap ne Rs ${discountAmt.toLocaleString()} bachaye 🎉 <button class="voucher-remove-btn" onclick="removeVoucher()">Remove</button>`,
+      'success'
+    );
     renderCart();
   }
 
@@ -794,12 +788,6 @@ const isOpen = hour >= 13 || hour < 2;
       if (discRow) {
         discRow.style.display = discount > 0 ? 'flex' : 'none';
         document.getElementById('discountVal').textContent = '− Rs ' + discount.toLocaleString();
-  const vMsg = document.getElementById('voucherMsg');
-if (vMsg && appliedVoucher) {
- 
-  // vMsg.innerHTML = `✅ Voucher applied! Aap ne Rs ${discount.toLocaleString()} bachaye 🎉 <button class="voucher-remove-btn" onclick="removeVoucher()">Remove</button>`;
-vMsg.innerHTML = `<span style="color:var(--red); font-weight:700;">✅ Voucher applied!</span> Aap ne Rs ${discount.toLocaleString()} bachaye 🎉 <button class="voucher-remove-btn" onclick="removeVoucher()">Remove</button>`;
-}
       }
     }
 
@@ -908,9 +896,7 @@ const isOpen = hour >= 13 || hour < 2;
     if (!address) { setError('address', 'Full address is required.'); valid = false; } else setError('address', '');
     if (!valid) return;
 
-    // const { ids, discount, delivery, total } = getCartTotals();
-    const { ids, subtotal, discount, delivery, total } = getCartTotals();
-
+const { ids, subtotal, discount, delivery, total } = getCartTotals();
     document.getElementById('successName').textContent = `Thank you, ${name}! Your order is on its way 🛵`;
 
     let successHTML = ids.map(id =>
@@ -923,23 +909,11 @@ const isOpen = hour >= 13 || hour < 2;
 
     successHTML += `<div class="s-item"><span>Delivery Fee</span><span>${delivery === 0 ? '🎉 Free!' : 'Rs 140'}</span></div>`;
     successHTML += `<div class="s-item total-row"><span>Total Paid</span><span>Rs ${total.toLocaleString()}</span></div>`;
+
+
 const orderDetails = ids.map(id =>
   `${PRODUCTS[id].emoji} ${PRODUCTS[id].name} x${cart[id]} = Rs ${(cart[id] * PRODUCTS[id].price).toLocaleString()}`
-).join('\n');
-
-emailjs.send('service_9tknvjs', 'template_c1fk7fh', {
-  customer_name: name,
-  customer_email: email,
-  customer_phone: '+92' + phone,
-  customer_area: area,
-  customer_address: address,
-  order_items: orderDetails,
-  // subtotal: 'Rs ' + subtotal.toLocaleString(),
-subtotal: 'Rs ' + subtotal,
-  discount: discount > 0 ? '- Rs ' + discount.toLocaleString() : 'None',
-  delivery_fee: delivery === 0 ? 'Free' : 'Rs 140',
-  total: 'Rs ' + total.toLocaleString(),
-});
+).join(' | ');
 
 fetch('https://script.google.com/macros/s/AKfycbxgLyg_r_ShYJrWO98Ltg4MM83C4KkmREEGaDBCFsJAV9q5JH0AtKjhse46UNjJr-clzQ/exec', {
   method: 'POST',
@@ -950,7 +924,7 @@ fetch('https://script.google.com/macros/s/AKfycbxgLyg_r_ShYJrWO98Ltg4MM83C4KkmRE
     area: area,
     address: address,
     items: orderDetails,
-    subtotal: 'Rs ' + subtotal,
+    subtotal: 'Rs ' + subtotal.toLocaleString(),
     discount: discount > 0 ? '- Rs ' + discount.toLocaleString() : 'None',
     delivery: delivery === 0 ? 'Free' : 'Rs 140',
     total: 'Rs ' + total.toLocaleString()
