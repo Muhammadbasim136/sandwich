@@ -829,7 +829,7 @@ const isOpen = hour >= 13 || hour < 2;
     // const isOpen = (hour === 13) || (hour === 14 && min === 0);
     // SAHI — 1:00 PM (13) se 2:00 AM (2) tak
 const isOpen = hour >= 13 || hour < 2;
-    if (!isOpen) { showToast('❌ Hum abhi closed hain! Timing: 1PM – 2PM Pakistan Time'); return; }
+    // if (!isOpen) { showToast('❌ Hum abhi closed hain! Timing: 1PM – 2PM Pakistan Time'); return; }
 
     const { ids } = getCartTotals();
     if (ids.length === 0) { showToast('Add something to your cart first!'); return; }
@@ -916,8 +916,10 @@ const orderDetails = ids.map(id =>
 ).join(' | ');
 
 fetch('https://script.google.com/macros/s/AKfycbxgLyg_r_ShYJrWO98Ltg4MM83C4KkmREEGaDBCFsJAV9q5JH0AtKjhse46UNjJr-clzQ/exec', {
-  method: 'POST',
-  body: JSON.stringify({
+   method: 'POST',
+   mode: 'no-cors',
+   headers: { 'Content-Type': 'application/json' },
+   body: JSON.stringify({
     name: name,
     email: email,
     phone: '+92' + phone,
@@ -930,6 +932,7 @@ fetch('https://script.google.com/macros/s/AKfycbxgLyg_r_ShYJrWO98Ltg4MM83C4KkmRE
     total: 'Rs ' + total.toLocaleString()
   })
 });
+
 
 
     document.getElementById('successItems').innerHTML = successHTML;
