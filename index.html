@@ -64,16 +64,18 @@
     @media (max-width: 480px) { .hero { min-height: 320px; } }
 
     .slider-bg { position: absolute; inset: 0; z-index: 0; }
-    .slide {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
+   .slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+
     .slide.active { opacity: 1; }
 
     .slider-dots {
@@ -236,7 +238,7 @@
     .mobile-cart-total { color: #fff; font-weight: 700; font-size: 1rem; }
 
     /* ===== TOAST ===== */
-    #toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--dark); color: #fff; padding: 12px 24px; border-radius: 50px; font-size: .88rem; font-weight: 500; box-shadow: 0 8px 32px rgba(0,0,0,.3); z-index: 999; transition: transform .4s cubic-bezier(.34,1.56,.64,1), opacity .4s; opacity: 0; pointer-events: none; white-space: nowrap; }
+    #toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--dark); color: #fff; padding: 12px 24px; border-radius: 50px; font-size: .88rem; font-weight: 500; box-shadow: 0 8px 32px rgba(0,0,0,.3); z-index: 999; transition: transform .4s cubic-bezier(.34,1.56,.64,1), opacity .4s; opacity: 0; pointer-events: none; white-space: nowrap; }
     #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
     @media(min-width: 901px) { #toast { bottom: 28px; } }
 
@@ -302,9 +304,9 @@
     /* ===== FOOTER ===== */
     footer { background: var(--dark); text-align: center; padding: 24px; font-size: .78rem; color: rgba(255,255,255,.35); }
     footer strong { color: rgba(255,255,255,.65); }
-    @media(max-width: 900px) { body { padding-bottom: 70px; } }
+    /* @media(max-width: 900px) { body { padding-bottom: 70px; } } */
 
-  .insta-btn{
+  /* .insta-btn{
     width:46px;
     height:46px;
     display:flex;
@@ -331,6 +333,91 @@
 
 .insta-btn:hover{
     transform:scale(1.05);
+} */
+
+
+.insta-btn {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 12px auto 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 107%,
+    #fdf497 0%, #fd5949 45%, #d6249f 65%, #285AEB 100%);
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(214,36,159,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.insta-btn:hover {
+  transform: scale(1.15) rotate(10deg);
+  box-shadow: 0 8px 30px rgba(214,36,159,0.7);
+  animation: none;
+}
+
+.insta-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+  display: block;
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(214,36,159,0.5); }
+  70%  { box-shadow: 0 0 0 10px rgba(214,36,159,0); }
+  100% { box-shadow: 0 0 0 0 rgba(214,36,159,0); }
+}
+
+@media(max-width: 580px) {
+  .card { 
+    grid-template-columns: 1fr; 
+  }
+  .card-img { 
+    min-height: 160px !important; 
+  }
+  .card-body { 
+    padding: 18px 16px 16px; 
+  }
+  .card-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .add-btn {
+    width: 100%;
+    min-width: unset;
+  }
+  .qty-control {
+    width: 100%;
+    justify-content: center;
+  }
+  .free-del-hint {
+    font-size: .7rem;
+    word-break: break-word;
+  }
+  .cards {
+    overflow: hidden;
+  }
+}
+/* @media (max-width: 768px) {
+  .slide:nth-child(2) {
+    background-size: contain;
+    background-position: center center;
+    background-color: #f5ede0;
+  }
+} */
+@media (max-width: 768px) {
+  .slide:nth-child(2) {
+    background-image: url('./banner3-mobile-improve.png') !important;
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+body {
+  overflow-x: hidden;
 }
   </style>
 </head>
@@ -356,7 +443,7 @@
   <div class="hero">
     <div class="slider-bg">
       <div class="slide active" style="background-image: url('./sandwich.png');"></div>
-      <div class="slide" style="background-image: url('./banner3.png'); background-position: left center;"></div>
+<div class="slide" style="background-image: url('./banner3.png'); background-position: center center;"></div>
     </div>
     <div class="slider-dots">
       <span class="dot active" onclick="goToSlide(0)"></span>
@@ -481,13 +568,13 @@
   </div>
 
   <!-- MOBILE CART BAR -->
-  <div class="mobile-cart-bar" id="mobileCartBar">
-    <div class="mobile-cart-info">
-      <div class="mobile-cart-count" id="mobileCartCount">0</div>
+  <!-- <div class="mobile-cart-bar" id="mobileCartBar">
+       <div class="mobile-cart-info">
+       <div class="mobile-cart-count" id="mobileCartCount">0</div>  
       <div class="mobile-cart-label">items in cart</div>
-    </div>
+    </div> 
     <div class="mobile-cart-total" id="mobileCartTotal">Rs 0</div>
-  </div>
+  </div> -->
 
   <!-- TOAST -->
   <div id="toast"></div>
@@ -590,7 +677,24 @@
         1.25 0 000-2.5zM12 7a5 5 0 100 10 5 5 0 
         000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
     </svg>
-</a>
+</a> 
+
+
+<!-- <a href="https://instagram.com/basim.1356" target="_blank" class="insta-btn">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+    <path d="M7.75 2C4.578 2 2 4.578 2 7.75v8.5C2 19.422 
+    4.578 22 7.75 22h8.5C19.422 22 22 19.422 22 
+    16.25v-8.5C22 4.578 19.422 2 16.25 
+    2h-8.5zm0 2h8.5C18.318 4 20 5.682 20 
+    7.75v8.5c0 2.068-1.682 3.75-3.75 
+    3.75h-8.5C5.682 20 4 18.318 4 
+    16.25v-8.5C4 5.682 5.682 4 7.75 
+    4zm8.75 1a1.25 1.25 0 100 2.5 1.25 
+    1.25 0 000-2.5zM12 7a5 5 0 100 10 5 5 0 
+    000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
+  </svg>
+  Follow on Instagram
+</a> -->
  
 
 
@@ -710,10 +814,10 @@
     const isEmpty = ids.length === 0;
     document.getElementById('cartEmpty').style.display = isEmpty ? 'block' : 'none';
     document.getElementById('cartItemsContainer').style.display = isEmpty ? 'none' : 'block';
-    const mBar = document.getElementById('mobileCartBar');
-    mBar.style.display = totalItems > 0 ? 'flex' : 'none';
-    document.getElementById('mobileCartCount').textContent = totalItems;
-    document.getElementById('mobileCartTotal').textContent = 'Rs ' + total.toLocaleString();
+    // const mBar = document.getElementById('mobileCartBar');
+    // mBar.style.display = totalItems > 0 ? 'flex' : 'none';
+    // document.getElementById('mobileCartCount').textContent = totalItems;
+    // document.getElementById('mobileCartTotal').textContent = 'Rs ' + total.toLocaleString();
     const vSection = document.getElementById('voucherSection');
     if (vSection) vSection.style.display = isEmpty ? 'none' : 'block';
     if (!isEmpty) {
@@ -789,7 +893,7 @@
     let summaryHTML = ids.map(id =>
       `<div class="mini-item"><span>${PRODUCTS[id].emoji} ${PRODUCTS[id].name} × ${cart[id]}</span><span>Rs ${(cart[id] * PRODUCTS[id].price).toLocaleString()}</span></div>`
     ).join('');
-    if (discount > 0) summaryHTML += `<div class="mini-item discount-line"><span>🎉 Discount (EID20 - 20%)</span><span>− Rs ${discount.toLocaleString()}</span></div>`;
+    if (discount > 0) summaryHTML += `<div class="mini-item discount-line"><span>🎉 Discount (${appliedVoucher.code} - ${appliedVoucher.discount}%)</span><span>− Rs ${discount.toLocaleString()}</span></div>`;
     summaryHTML += `<div class="mini-item"><span>Delivery</span><span>${delivery === 0 ? '🎉 Free!' : 'Rs ' + delivery}</span></div>`;
     summaryHTML += `<div class="mini-total"><span>Total</span><span>Rs ${total.toLocaleString()}</span></div>`;
     document.getElementById('orderMiniSummary').innerHTML = summaryHTML;
@@ -841,7 +945,7 @@
     let successHTML = ids.map(id =>
       `<div class="s-item"><span>${PRODUCTS[id].emoji} ${PRODUCTS[id].name} × ${cart[id]}</span><span>Rs ${(cart[id] * PRODUCTS[id].price).toLocaleString()}</span></div>`
     ).join('');
-    if (discount > 0) successHTML += `<div class="s-item discount-row"><span>🎉 Discount (EID20 - 20%)</span><span>− Rs ${discount.toLocaleString()}</span></div>`;
+    if (discount > 0) successHTML += `<div class="s-item discount-row"><span>🎉 Discount (${appliedVoucher.code} - ${appliedVoucher.discount}%)</span><span>− Rs ${discount.toLocaleString()}</span></div>`;
     successHTML += `<div class="s-item"><span>Delivery Fee</span><span>${delivery === 0 ? '🎉 Free!' : 'Rs 140'}</span></div>`;
     successHTML += `<div class="s-item total-row"><span>Total Paid</span><span>Rs ${total.toLocaleString()}</span></div>`;
 
