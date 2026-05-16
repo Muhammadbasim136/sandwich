@@ -6,7 +6,6 @@
   <title>Sandwich — Taste the Street</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -27,7 +26,7 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--dark); min-height: 100vh; }
 
-    /* ===== NAV ===== */
+    /* NAV */
     nav {
       position: sticky; top: 0; z-index: 100;
       background-color: black;
@@ -53,53 +52,21 @@
       font-size: .72rem; font-weight: 700;
     }
 
-    /* ===== HERO + SLIDER ===== */
-    .hero {
+    /* HERO */
+    /* .hero {
       position: relative;
       width: 100%;
-      overflow: hidden;
-      min-height: 500px;
+      background:
+        url('./sandwich.png') center center / cover no-repeat;
+    
+      padding: 72px 5vw 80px;
+      overflow: hidden; min-height: 320px;
     }
-    @media (max-width: 768px) { .hero { min-height: 400px; } }
-    @media (max-width: 480px) { .hero { min-height: 320px; } }
-
-    .slider-bg { position: absolute; inset: 0; z-index: 0; }
-    .slide {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-    .slide.active { opacity: 1; }
-
-    .slider-dots {
-      position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
-      display: flex; gap: 8px; z-index: 10;
-    }
-    .dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: rgba(255,255,255,0.45); cursor: pointer;
-      transition: background .3s, transform .3s;
-    }
-    .dot.active { background: #fff; transform: scale(1.3); }
-
-    .hero-blob { position: absolute; border-radius: 50%; opacity: .12; background: #fff; z-index: 1; }
+    @media (max-width: 600px) { .hero { padding: 40px 5vw 48px; min-height: 260px; } } */
+    .hero-blob { position: absolute; border-radius: 50%; opacity: .12; background: #fff; }
     .hero-blob-1 { width: 420px; height: 420px; top: -120px; right: -80px; }
     .hero-blob-2 { width: 200px; height: 200px; bottom: -60px; left: 20%; }
-
-    .hero-inner {
-      position: relative; z-index: 2;
-      max-width: 680px;
-      padding: 72px 5vw 80px;
-      transition: opacity .5s ease;
-    }
-    @media (max-width: 768px) { .hero-inner { padding: 40px 5vw 48px; } }
-    @media (max-width: 480px) { .hero-inner { padding: 32px 4vw 40px; } }
-
+    .hero-inner { position: relative; max-width: 680px; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 6px;
       background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3);
@@ -122,14 +89,14 @@
     .stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: #fff; }
     .stat-label { font-size: .72rem; font-weight: 400; color: rgba(255,255,255,.65); text-transform: uppercase; letter-spacing: 1px; }
 
-    /* ===== LAYOUT ===== */
+    /* LAYOUT */
     .layout { display: grid; grid-template-columns: 1fr 360px; gap: 32px; max-width: 1200px; margin: 0 auto; padding: 48px 5vw 80px; }
     @media(max-width: 900px) { .layout { grid-template-columns: 1fr; padding: 32px 4vw 80px; } }
 
     .section-label { font-size: .72rem; font-weight: 600; color: var(--red); text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 8px; }
     .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--dark); margin-bottom: 32px; }
 
-    /* ===== PRODUCT CARDS ===== */
+    /* PRODUCT CARDS */
     .cards { display: flex; flex-direction: column; gap: 28px; }
     .card {
       background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow);
@@ -166,7 +133,7 @@
     .add-btn.added { background: linear-gradient(135deg, #27ae60, #2ecc71); box-shadow: 0 4px 16px rgba(39,174,96,.35); }
     .free-del-hint { font-size: .75rem; font-weight: 600; color: var(--red); background: #fff5f5; border: 1.5px dashed rgba(192,57,43,.25); border-radius: 8px; padding: 6px 10px; transition: all .3s; }
 
-    /* ===== CART SIDEBAR ===== */
+    /* CART SIDEBAR */
     .cart-sidebar { position: sticky; top: 80px; align-self: start; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); border: 1.5px solid rgba(192,57,43,.08); overflow: hidden; }
     .cart-header { background: linear-gradient(135deg, var(--red-dark), var(--red)); padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; }
     .cart-header h2 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: #fff; }
@@ -179,7 +146,7 @@
     @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
     .cart-item-emoji { font-size: 1.6rem; flex-shrink: 0; }
     .cart-item-info { flex: 1; min-width: 0; }
-    .cart-item-name { font-size: .85rem; font-weight: 600; color: var(--dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cart-item-name { font-size: .85rem; font-weight: 600; color: var(--dark); }
     .cart-item-price { font-weight: 700; color: var(--red); font-size: .9rem; flex-shrink: 0; }
     .cart-item-remove { background: none; border: none; cursor: pointer; color: var(--gray); font-size: 1rem; transition: color .2s; flex-shrink: 0; }
     .cart-item-remove:hover { color: var(--red); }
@@ -197,50 +164,90 @@
     .place-order-btn:hover { opacity: .9; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(192,57,43,.4); }
     .place-order-btn .btn-icon { font-size: 1.1rem; }
 
-    /* ===== VOUCHER ===== */
-    .voucher-section { margin: 12px 0 8px; display: flex; flex-direction: column; gap: 6px; }
-    .voucher-row { display: flex; gap: 8px; align-items: center; }
-    .voucher-input {
-      flex: 1; border: 1.5px solid rgba(192,57,43,.2); border-radius: 10px; padding: 9px 12px;
-      font-family: 'Poppins', sans-serif; font-size: .82rem; color: var(--dark); background: var(--cream);
-      outline: none; transition: border-color .2s, box-shadow .2s; text-transform: uppercase;
+    /* VOUCHER SECTION */
+    .voucher-section {
+      margin: 12px 0 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
-    .voucher-input:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(192,57,43,.1); }
-    .voucher-input.applied { border-color: #27ae60; background: #f0fff4; color: #27ae60; font-weight: 600; }
-    .voucher-input.error { border-color: #e74c3c; background: #fff5f5; }
+    .voucher-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .voucher-input {
+      flex: 1;
+      border: 1.5px solid rgba(192,57,43,.2);
+      border-radius: 10px;
+      padding: 9px 12px;
+      font-family: 'Poppins', sans-serif;
+      font-size: .82rem;
+      color: var(--dark);
+      background: var(--cream);
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      text-transform: uppercase;
+    }
+    .voucher-input:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(192,57,43,.1);
+    }
+    .voucher-input.applied {
+      border-color: #27ae60;
+      background: #f0fff4;
+      color: #27ae60;
+      font-weight: 600;
+    }
+    .voucher-input.error {
+      border-color: #e74c3c;
+      background: #fff5f5;
+    }
     .voucher-apply-btn {
-      background: linear-gradient(135deg, var(--red), var(--orange)); color: #fff; border: none;
-      cursor: pointer; border-radius: 10px; padding: 9px 14px; font-family: 'Poppins', sans-serif;
-      font-weight: 600; font-size: .8rem; transition: opacity .2s, transform .2s; white-space: nowrap; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--red), var(--orange));
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      padding: 9px 14px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: .8rem;
+      transition: opacity .2s, transform .2s;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .voucher-apply-btn:hover { opacity: .88; transform: translateY(-1px); }
-    .voucher-apply-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
-    .voucher-msg { font-size: .75rem; font-weight: 600; min-height: 14px; padding: 0 2px; }
+    .voucher-apply-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .voucher-msg {
+      font-size: .75rem;
+      font-weight: 600;
+      min-height: 14px;
+      padding: 0 2px;
+    }
     .voucher-msg.success { color: #27ae60; }
     .voucher-msg.error-msg { color: #e74c3c; }
-    .voucher-remove-btn { background: none; border: none; cursor: pointer; color: #e74c3c; font-size: .75rem; font-weight: 600; text-decoration: underline; padding: 0; font-family: 'Poppins', sans-serif; }
-
-    /* ===== MOBILE CART BAR ===== */
-    .mobile-cart-bar {
-      display: none;
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 150;
-      background: linear-gradient(135deg, var(--red-dark), var(--red));
-      padding: 12px 20px;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 -4px 20px rgba(0,0,0,.2);
+    .voucher-remove-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #e74c3c;
+      font-size: .75rem;
+      font-weight: 600;
+      text-decoration: underline;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
     }
-    .mobile-cart-info { display: flex; align-items: center; gap: 10px; }
-    .mobile-cart-count { background: var(--orange); color: #fff; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .8rem; }
-    .mobile-cart-label { color: #fff; font-size: .9rem; font-weight: 500; }
-    .mobile-cart-total { color: #fff; font-weight: 700; font-size: 1rem; }
 
-    /* ===== TOAST ===== */
-    #toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--dark); color: #fff; padding: 12px 24px; border-radius: 50px; font-size: .88rem; font-weight: 500; box-shadow: 0 8px 32px rgba(0,0,0,.3); z-index: 999; transition: transform .4s cubic-bezier(.34,1.56,.64,1), opacity .4s; opacity: 0; pointer-events: none; white-space: nowrap; }
+    /* TOAST */
+    #toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--dark); color: #fff; padding: 12px 24px; border-radius: 50px; font-size: .88rem; font-weight: 500; box-shadow: 0 8px 32px rgba(0,0,0,.3); z-index: 999; transition: transform .4s cubic-bezier(.34,1.56,.64,1), opacity .4s; opacity: 0; pointer-events: none; white-space: nowrap; }
     #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-    @media(min-width: 901px) { #toast { bottom: 28px; } }
 
-    /* ===== CHECKOUT MODAL ===== */
+    /* CHECKOUT MODAL */
     .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(26,10,0,.6); backdrop-filter: blur(5px); align-items: center; justify-content: center; padding: 16px; overflow-y: auto; }
     .modal-overlay.show { display: flex; }
     .checkout-modal { background: var(--white); border-radius: 24px; width: 100%; max-width: 540px; max-height: 92vh; overflow-y: auto; animation: popIn .4s cubic-bezier(.34,1.56,.64,1); box-shadow: 0 32px 80px rgba(0,0,0,.3); }
@@ -275,14 +282,13 @@
     .select-wrap { position: relative; }
     .field-select { width: 100%; appearance: none; cursor: pointer; padding-right: 32px !important; }
     .select-arrow { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--gray); font-size: .8rem; }
+    .field-hint { font-size: .72rem; color: var(--gray); }
     .field-error { font-size: .72rem; color: #e74c3c; min-height: 14px; font-weight: 500; }
     .checkout-footer { display: flex; gap: 12px; padding: 16px 28px 24px; }
     .btn-cancel { flex: 0 0 auto; background: var(--cream); color: var(--gray); border: 1.5px solid rgba(0,0,0,.1); border-radius: 12px; padding: 14px 20px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: .88rem; cursor: pointer; transition: background .2s; }
     .btn-cancel:hover { background: #f0e0d8; }
     .btn-confirm { flex: 1; background: linear-gradient(135deg, var(--red), var(--orange)); color: #fff; border: none; cursor: pointer; border-radius: 12px; padding: 14px 20px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .95rem; box-shadow: 0 6px 20px rgba(192,57,43,.35); transition: opacity .2s, transform .2s; }
     .btn-confirm:hover { opacity: .9; transform: translateY(-1px); }
-
-    /* ===== SUCCESS SCREEN ===== */
     .success-screen { padding: 40px 32px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }
     .success-anim { font-size: 4.5rem; animation: bounce .6s cubic-bezier(.34,1.56,.64,1); }
     @keyframes bounce { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
@@ -298,315 +304,450 @@
     .delivery-notice strong { color: var(--red); }
     .btn-done { background: linear-gradient(135deg, var(--red), var(--orange)); color: #fff; border: none; cursor: pointer; border-radius: 50px; padding: 14px 36px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .95rem; box-shadow: 0 6px 24px rgba(192,57,43,.35); transition: opacity .2s, transform .2s; margin-top: 6px; }
     .btn-done:hover { opacity: .88; transform: translateY(-2px); }
+    .mobile-cart-info { display: flex; align-items: center; gap: 10px; }
+    .mobile-cart-count { background: var(--orange); color: #fff; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .8rem; }
+    .mobile-cart-label { color: #fff; font-size: .9rem; font-weight: 500; }
+    .mobile-cart-total { color: #fff; font-weight: 700; font-size: 1rem; }
+    .mobile-order-btn { background: #fff; color: var(--red); border: none; cursor: pointer; border-radius: 50px; padding: 10px 20px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .88rem; }
+/* .slider-bg { position: absolute; inset: 0; z-index: 0; }
+ .slide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0; transition: opacity 1s ease;
+}
 
-    /* ===== FOOTER ===== */
+.slide {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease;
+  width: 100%;
+  height: 100%;
+}
+
+.slide.active { opacity: 1; }
+.slider-dots {
+  position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 10;
+}
+.dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(255,255,255,0.45); cursor: pointer;
+  transition: background .3s, transform .3s;
+}
+.dot.active { background: #fff; transform: scale(1.3); }  */
+
+/* .slide {
+  position: absolute; inset: 0;
+  opacity: 0; transition: opacity 1s ease;
+  width: 100%; height: 100%;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.slide.active { opacity: 1; } */
+
+
+/* .slider-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.slide.active { opacity: 1; }
+.slider-dots {
+  position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 10;
+}
+.dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(255,255,255,0.45); cursor: pointer;
+  transition: background .3s, transform .3s;
+}
+.dot.active { background: #fff; transform: scale(1.3); } */
+
+/* .hero {
+  position: relative;
+  width: 100%;
+  padding: 72px 5vw 80px;
+  overflow: hidden;
+  min-height: 420px;
+}
+@media (max-width: 600px) { 
+  .hero { padding: 40px 5vw 48px; min-height: 360px; } 
+} */
+
+
+.slider-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-size: cover;
+  /* background-position: center center; */
+  background-position: left center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.slide.active { opacity: 1; }
+.slider-dots {
+  position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 10;
+}
+.dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(255,255,255,0.45); cursor: pointer;
+  transition: background .3s, transform .3s;
+}
+.dot.active { background: #fff; transform: scale(1.3); }
+@media (max-width: 1024px) {
+  .slide:nth-child(2) {
+    display: none;
+  }
+  .slider-dots span:nth-child(2) {
+    display: none;
+  }
+}
+
+
+.hero {
+  position: relative;
+  width: 100%;
+  padding: 72px 5vw 80px;
+  overflow: hidden;
+  min-height: 500px;
+}
+@media (max-width: 768px) { 
+  .hero { padding: 40px 5vw 48px; min-height: 400px; } 
+}
+@media (max-width: 480px) { 
+  .hero { padding: 32px 4vw 40px; min-height: 350px; } 
+}
+
+@media (max-width: 1024px) {
+  .slide:nth-child(3) { display: none; }
+  .slider-dots span:nth-child(3) { display: none; }
+}
+
+
+
     footer { background: var(--dark); text-align: center; padding: 24px; font-size: .78rem; color: rgba(255,255,255,.35); }
     footer strong { color: rgba(255,255,255,.65); }
-    @media(max-width: 900px) { body { padding-bottom: 70px; } }
-
-  .insta-btn{
-    width:46px;
-    height:46px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:auto;
-    border-radius:12px;
-    background:
-    radial-gradient(circle at 30% 107%,
-    #fdf497 0%,
-    #fd5949 45%,
-    #d6249f 65%,
-    #285AEB 100%);
-    text-decoration:none;
-    transition:0.3s ease;
-}
-
-.insta-btn svg{
-    width:22px;
-    height:22px;
-    fill:white;
-    display:block;
-}
-
-.insta-btn:hover{
-    transform:scale(1.05);
-}
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
 
-  <!-- TIMING BANNER -->
   <div id="timingBanner" style="display:none; background:#1a0a00; color:#fff; text-align:center; padding:12px 20px; font-size:.88rem; align-items:center; justify-content:center; gap:8px;">
-    ⏰ Hum abhi closed hain! <strong>Humari timing: 1:00 PM – 2:00 AM (Pakistan Time)</strong>
+  ⏰ Hum abhi closed hain! <strong>Humari timing: 1:00 PM – 2:00 PM (Pakistan Time)</strong>
+</div>
+
+<nav>
+  <div>
+    <div class="nav-logo">Sand<span>wich</span></div>
+    <div class="nav-tagline">Taste the Street</div>
   </div>
+  <button class="nav-cart-btn" onclick="scrollToCart()">
+    🛒 Cart <span class="cart-count" id="navCartCount">0</span>
+  </button>
+</nav>
 
-  <!-- NAV -->
-  <nav>
-    <div>
-      <div class="nav-logo">Sand<span>wich</span></div>
-      <div class="nav-tagline">Taste the Street</div>
-    </div>
-    <button class="nav-cart-btn" onclick="scrollToCart()">
-      🛒 Cart <span class="cart-count" id="navCartCount">0</span>
-    </button>
-  </nav>
-
-  <!-- HERO SLIDER -->
-  <div class="hero">
-    <div class="slider-bg">
-      <div class="slide active" style="background-image: url('./sandwich.png');"></div>
-      <div class="slide" style="background-image: url('./banner3.png'); background-position: left center;"></div>
-    </div>
-    <div class="slider-dots">
-      <span class="dot active" onclick="goToSlide(0)"></span>
-      <span class="dot" onclick="goToSlide(1)"></span>
-    </div>
-    <div class="hero-blob hero-blob-1"></div>
-    <div class="hero-blob hero-blob-2"></div>
-    <div class="hero-inner" id="heroInner">
-      <div class="hero-badge">Now Open · Order Fresh</div>
-      <h1>Bold Flavors,<br><em>Real Ingredients.</em></h1>
-      <p>Handcrafted shawarmas &amp; signature sandwiches made fresh to order. Street-food soul, restaurant-quality taste.</p>
-      <div class="hero-stats">
-        <div class="stat"><div class="stat-num">30-45'</div><div class="stat-label">Avg. Ready Time</div></div>
-        <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">Customer Rating</div></div>
-        <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Fresh Daily</div></div>
-      </div>
+<!-- <div class="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">Now Open · Order Fresh</div>
+    <h1>Bold Flavors,<br><em>Real Ingredients.</em></h1>
+    <p>Handcrafted shawarmas &amp; signature sandwiches made fresh to order. Street-food soul, restaurant-quality taste.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">30-45'</div><div class="stat-label">Avg. Ready Time</div></div>
+      <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">Customer Rating</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Fresh Daily</div></div>
     </div>
   </div>
+</div> -->
 
-  <!-- MAIN LAYOUT -->
-  <div class="layout">
-    <section id="menu">
-      <div class="section-label">Our Menu</div>
-      <h2 class="section-title">Pick Your Favourite</h2>
-      <div class="cards">
+<div class="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
 
-        <!-- SHAWARMA -->
-        <div class="card" id="card-shawarma">
-          <div class="card-img shawarma">
-            <div class="card-img-inner"><img src="./shawrma pic.jpg" alt="shawarma"></div>
-            <div class="card-img-badge">🔥 Best Seller</div>
-            <div class="card-img-plate"></div>
-          </div>
-          <div class="card-body">
-            <div class="card-tag">Middle Eastern · Grilled</div>
-            <div class="card-name">Chicken Shawarma</div>
-            <div class="card-desc">Served with fries</div>
-            <div class="card-meta">
-              <div class="card-rating"><span>★★★★★</span> 4.8 (202)</div>
-              <div class="card-time">⏱ 30–45 min</div>
-            </div>
-            <div class="card-price"><sup>Rs</sup>270</div>
-            <div class="card-actions">
-              <div class="qty-control">
-                <button class="qty-btn" onclick="changeQty('shawarma', -1)">−</button>
-                <span class="qty-val" id="qty-shawarma">1</span>
-                <button class="qty-btn" onclick="changeQty('shawarma', 1)">+</button>
-              </div>
-              <button class="add-btn" id="addbtn-shawarma" onclick="addToCart('shawarma')">Add to Cart 🛒</button>
-            </div>
-            <div class="free-del-hint" id="hint-shawarma"></div>
-          </div>
-        </div>
+  <!-- SLIDER IMAGES -->
+  <div class="slider-bg">
+    <!-- <div class="slide active" style="background-image: url('./sandwich.png');"></div>
+    <div class="slide" style="background-image: url('./banner2.png');"></div>
+    <div class="slide" style="background-image: url('./banner3.png');"></div> -->
 
-        <!-- SANDWICH -->
-        <div class="card" id="card-sandwich">
-          <div class="card-img sandwich">
-            <div class="card-img-inner"><img src="./sandwichpic.jpd.png" alt="sandwich"></div>
-            <div class="card-img-badge">⭐ Fan Favourite</div>
-            <div class="card-img-plate"></div>
-          </div>
-          <div class="card-body">
-            <div class="card-tag">Artisan · Loaded</div>
-            <div class="card-name">Signature Sandwich</div>
-            <div class="card-desc">Served with fries</div>
-            <div class="card-meta">
-              <div class="card-rating"><span>★★★★★</span> 4.9 (307)</div>
-              <div class="card-time">⏱ 30–45 min</div>
-            </div>
-            <div class="card-price"><sup>Rs</sup>390</div>
-            <div class="card-actions">
-              <div class="qty-control">
-                <button class="qty-btn" onclick="changeQty('sandwich', -1)">−</button>
-                <span class="qty-val" id="qty-sandwich">1</span>
-                <button class="qty-btn" onclick="changeQty('sandwich', 1)">+</button>
-              </div>
-              <button class="add-btn" id="addbtn-sandwich" onclick="addToCart('sandwich')">Add to Cart 🛒</button>
-            </div>
-            <div class="free-del-hint" id="hint-sandwich"></div>
-          </div>
-        </div>
+    <!-- <div class="slide active" style="background-image: url('./sandwich.png'); background-position: center center;"></div>
+<div class="slide" style="background-image: url('./banner2.png'); background-position: left center;"></div>
+<div class="slide" style="background-image: url('./banner3.png'); background-position: left center;"></div> -->
 
-      </div>
-    </section>
 
-    <!-- CART SIDEBAR -->
-    <aside id="cartSidebar">
-      <div class="cart-sidebar">
-        <div class="cart-header">
-          <h2>🛒 Your Order</h2>
-          <span class="cart-badge" id="cartBadge">0 items</span>
-        </div>
-        <div id="cartEmpty" class="cart-empty">
-          <div class="cart-empty-icon">🍽️</div>
-          <p>Your cart is empty.<br>Add something delicious to get started!</p>
-        </div>
-        <div id="cartItemsContainer" style="display:none;">
-          <div class="cart-items" id="cartItems"></div>
-          <div class="cart-divider"></div>
-          <div class="cart-summary">
-            <div class="cart-row"><span>Subtotal</span><span id="subtotal">Rs 0</span></div>
-            <div class="cart-row discount" id="discountRow" style="display:none;">
-              <span>🎉 Discount (20%)</span>
-              <span id="discountVal">− Rs 0</span>
-            </div>
-            <div class="cart-row"><span>Delivery Fee</span><span id="deliveryVal">Rs 140</span></div>
-            <div id="freeDeliveryMsg" style="display:none; font-size:.78rem; color:green; text-align:center; margin-bottom:6px; font-weight:600;">🎉 Free delivery unlock ho gai!</div>
-            <div class="cart-row total"><span>Total</span><span id="totalVal">Rs 0</span></div>
-            <div class="voucher-section" id="voucherSection" style="display:none;">
-              <div class="voucher-row">
-                <input type="text" class="voucher-input" id="voucherInput" placeholder="VOUCHER CODE" maxlength="20"/>
-                <button class="voucher-apply-btn" id="voucherApplyBtn" onclick="applyVoucher()">Apply</button>
-              </div>
-              <div class="voucher-msg" id="voucherMsg"></div>
-            </div>
-            <div id="cartFreeDelHint" style="font-size:.75rem; font-weight:600; color:var(--red); background:#fff5f5; border:1.5px dashed rgba(192,57,43,.25); border-radius:8px; padding:6px 10px; text-align:center; margin-bottom:8px;"></div>
-            <button class="place-order-btn" onclick="placeOrder()"><span class="btn-icon">✅</span> Place Order</button>
-          </div>
-        </div>
-      </div>
-    </aside>
+<div class="slide active" style="background-image: url('./sandwich.png'); background-position: center center;"></div>
+<!-- <div class="slide" style="background-image: url('./bannner2resize.png'); background-position: center center; background-size: cover;"></div> -->
+<div class="slide" style="background-image: url('./banner2.png'); background-position: center center; background-size: cover;"></div>
+</div>
+
+  <!-- DOTS -->
+  <div class="slider-dots">
+    <span class="dot active" onclick="goToSlide(0)"></span>
+    <span class="dot" onclick="goToSlide(1)"></span>
+    <span class="dot" onclick="goToSlide(2)"></span>
   </div>
 
-  <!-- MOBILE CART BAR -->
-  <div class="mobile-cart-bar" id="mobileCartBar">
-    <div class="mobile-cart-info">
-      <div class="mobile-cart-count" id="mobileCartCount">0</div>
-      <div class="mobile-cart-label">items in cart</div>
+  <div class="hero-inner">
+    <div class="hero-badge">Now Open · Order Fresh</div>
+    <h1>Bold Flavors,<br><em>Real Ingredients.</em></h1>
+    <p>Handcrafted shawarmas &amp; signature sandwiches made fresh to order. Street-food soul, restaurant-quality taste.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">30-45'</div><div class="stat-label">Avg. Ready Time</div></div>
+      <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">Customer Rating</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Fresh Daily</div></div>
     </div>
-    <div class="mobile-cart-total" id="mobileCartTotal">Rs 0</div>
   </div>
+</div>
 
-  <!-- TOAST -->
-  <div id="toast"></div>
+<div class="layout">
+  <section id="menu">
+    <div class="section-label">Our Menu</div>
+    <h2 class="section-title">Pick Your Favourite</h2>
+    <div class="cards">
 
-  <!-- CHECKOUT MODAL -->
-  <div class="modal-overlay" id="checkoutModal">
-    <div class="checkout-modal">
-      <div id="step-form">
-        <div class="checkout-header">
-          <div><div class="checkout-label">Almost there!</div><h2 class="checkout-title">Delivery Details</h2></div>
-          <button class="checkout-close-btn" onclick="closeCheckout()">✕</button>
-        </div>
-        <div class="checkout-body">
-          <div class="order-mini-summary" id="orderMiniSummary"></div>
-          <div class="form-grid">
-            <div class="field full">
-              <label class="field-label">Full Name <span class="req">*</span></label>
-              <div class="field-wrap"><span class="field-icon">👤</span><input id="f-name" type="text" class="field-input" placeholder="e.g. Ahmed Khan" maxlength="60"/></div>
-              <div class="field-error" id="err-name"></div>
-            </div>
-            <div class="field full">
-              <label class="field-label">Email Address <span class="req">*</span></label>
-              <div class="field-wrap"><span class="field-icon">✉️</span><input id="f-email" type="email" class="field-input" placeholder="e.g. ahmed@gmail.com"/></div>
-              <div class="field-error" id="err-email"></div>
-            </div>
-            <div class="field full">
-              <label class="field-label">Phone Number <span class="req">*</span></label>
-              <div class="field-wrap"><span class="field-icon">📞</span><span class="field-prefix">+92</span><input id="f-phone" type="tel" class="field-input has-prefix" placeholder="3XXXXXXXXX" maxlength="11"/></div>
-              <div class="field-error" id="err-phone"></div>
-            </div>
-            <div class="field half">
-              <label class="field-label">City <span class="req">*</span></label>
-              <div class="field-wrap"><span class="field-icon">🏙️</span><input type="text" class="field-input" value="Karachi" readonly style="cursor:not-allowed;background:#f5ede8;"/></div>
-            </div>
-            <div class="field half">
-              <label class="field-label">Area <span class="req">*</span></label>
-              <div class="field-wrap select-wrap"><span class="field-icon">📍</span>
-                <select id="f-area" class="field-input field-select">
-                  <option value="">— Select Area —</option>
-                  <option>Tariqroad</option>
-                  <option>Defence phase 1 / phase 2</option>
-                  <option>All over mehmodabad</option>
-                  <option>P.E.C.H.S</option>
-                  <option>Saddar</option>
-                  <option>Bahadurabad</option>
-                  <option>Gulshan-e-Iqbal</option>
-                </select>
-                <span class="select-arrow">▾</span>
-              </div>
-              <div class="field-error" id="err-area"></div>
-            </div>
-            <div class="field full">
-              <label class="field-label">Full Address <span class="req">*</span></label>
-              <div class="field-wrap"><span class="field-icon">🏠</span><input id="f-address" type="text" class="field-input" placeholder="e.g. House 12, Street 5, Block B" maxlength="120"/></div>
-              <div class="field-error" id="err-address"></div>
-            </div>
-            <div class="field full">
-              <label class="field-label">Zipcode <span class="opt">(Optional)</span></label>
-              <div class="field-wrap"><span class="field-icon">🔢</span><input id="f-zip" type="text" class="field-input" placeholder="e.g. 75500" maxlength="10"/></div>
-            </div>
+      <div class="card" id="card-shawarma">
+        <div class="card-img shawarma">
+          <div class="card-img-inner">
+            <img src="./shawrma pic.jpg" alt="shawarma">
           </div>
+          <div class="card-img-badge">🔥 Best Seller</div>
+          <div class="card-img-plate"></div>
         </div>
-        <div class="checkout-footer">
-          <button class="btn-cancel" onclick="closeCheckout()">Cancel</button>
-          <button class="btn-confirm" onclick="submitOrder()">Confirm Order &nbsp;✅</button>
+        <div class="card-body">
+          <div class="card-tag">Middle Eastern · Grilled</div>
+          <div class="card-name">Chicken Shawarma</div>
+          <div class="card-desc">serve with fries </div>
+          <div class="card-meta">
+            <div class="card-rating"><span>★★★★★</span> 4.8 (202)</div>
+            <div class="card-time">⏱ 30–45 min</div>
+          </div>
+          <div class="card-price"><sup>Rs</sup>270</div>
+          <div class="card-actions">
+            <div class="qty-control">
+              <button class="qty-btn" onclick="changeQty('shawarma', -1)">−</button>
+              <span class="qty-val" id="qty-shawarma">1</span>
+              <button class="qty-btn" onclick="changeQty('shawarma', 1)">+</button>
+            </div>
+            <button class="add-btn" id="addbtn-shawarma" onclick="addToCart('shawarma')">Add to Cart 🛒</button>
+          </div>
+          <div class="free-del-hint" id="hint-shawarma"></div>
         </div>
       </div>
 
-      <div id="step-success" style="display:none;">
-        <div class="success-screen">
-          <div class="success-anim">🎉</div>
-          <h2 class="success-title">Order Confirmed!</h2>
-          <p class="success-sub" id="successName"></p>
-          <div class="success-card"><div id="successItems"></div></div>
-          <div class="delivery-notice">
-            <div class="delivery-icon">🛵</div>
-            <p>We will deliver this order in <strong>30 – 45 minutes</strong><br>and we will contact you on your <strong>phone number</strong> and on <strong>WhatsApp</strong>.</p>
+      <div class="card" id="card-sandwich">
+        <div class="card-img sandwich">
+          <div class="card-img-inner"><img src="./sandwichpic.jpd.png"></div>
+          <div class="card-img-badge">⭐ Fan Favourite</div>
+          <div class="card-img-plate"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Artisan · Loaded</div>
+          <div class="card-name">Signature Sandwich</div>
+          <div class="card-desc">serve with fries  </div>
+          <div class="card-meta">
+            <div class="card-rating"><span>★★★★★</span> 4.9 (307)</div>
+            <div class="card-time">⏱ 30–45 min</div>
           </div>
-          <button class="btn-done" onclick="closeModal()">Back to Menu 🏠</button>
+          <div class="card-price"><sup>Rs</sup>390</div>
+          <div class="card-actions">
+            <div class="qty-control">
+              <button class="qty-btn" onclick="changeQty('sandwich', -1)">−</button>
+              <span class="qty-val" id="qty-sandwich">1</span>
+              <button class="qty-btn" onclick="changeQty('sandwich', 1)">+</button>
+            </div>
+            <button class="add-btn" id="addbtn-sandwich" onclick="addToCart('sandwich')">Add to Cart 🛒</button>
+          </div>
+          <div class="free-del-hint" id="hint-sandwich"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <aside id="cartSidebar">
+    <div class="cart-sidebar">
+      <div class="cart-header">
+        <h2>🛒 Your Order</h2>
+        <span class="cart-badge" id="cartBadge">0 items</span>
+      </div>
+      <div id="cartEmpty" class="cart-empty">
+        <div class="cart-empty-icon">🍽️</div>
+        <p>Your cart is empty.<br>Add something delicious to get started!</p>
+      </div>
+      <div id="cartItemsContainer" style="display:none;">
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-divider"></div>
+        <div class="cart-summary">
+
+          <div class="cart-row"><span>Subtotal</span><span id="subtotal">Rs 0</span></div>
+
+          <!-- ✅ DISCOUNT ROW — voucher apply hone par dikhega -->
+          <div class="cart-row discount" id="discountRow" style="display:none;">
+            <span>🎉 Discount (20%)</span>
+            <span id="discountVal">− Rs 0</span>
+          </div>
+
+          <div class="cart-row"><span>Delivery Fee</span><span id="deliveryVal">Rs 140</span></div>
+          <div id="freeDeliveryMsg" style="display:none; font-size:.78rem; color:green; text-align:center; margin-bottom:6px; font-weight:600;">🎉 Aap ne free delivery unlock kar li!</div>
+          <div class="cart-row total"><span>Total</span><span id="totalVal">Rs 0</span></div>
+
+          <!-- ✅ VOUCHER SECTION — cart mein items aane par dikhega -->
+          <div class="voucher-section" id="voucherSection" style="display:none;">
+            <div class="voucher-row">
+              <input
+                type="text"
+                class="voucher-input"
+                id="voucherInput"
+                placeholder="VOUCHER CODE"
+                maxlength="20"
+              />
+              <button class="voucher-apply-btn" id="voucherApplyBtn" onclick="applyVoucher()">Apply</button>
+            </div>
+            <div class="voucher-msg" id="voucherMsg"></div>
+          </div>
+
+          <div id="cartFreeDelHint" style="font-size:.75rem; font-weight:600; color:var(--red); background:#fff5f5; border:1.5px dashed rgba(192,57,43,.25); border-radius:8px; padding:6px 10px; text-align:center; margin-bottom:8px;"></div>
+          <button class="place-order-btn" onclick="placeOrder()"><span class="btn-icon">✅</span> Place Order</button>
         </div>
       </div>
     </div>
+  </aside>
+</div>
+
+<div class="mobile-cart-bar" id="mobileCartBar" style="display:none;">
+  <div class="mobile-cart-info">
+    <div class="mobile-cart-count" id="mobileCartCount">0</div>
+    <div class="mobile-cart-label">items in cart</div>
   </div>
+  <div class="mobile-cart-total" id="mobileCartTotal">Rs 0</div>
+</div>
 
-  <!-- FOOTER -->
-  <footer>
-    &copy; 2026 <strong>Sandwich</strong> — Taste the Street. Crafted with ❤️ in Karachi.
-    <p>For any issue contact on our Instagram</p>
- <a href="https://instagram.com/basim.1356" target="_blank" class="insta-btn">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-    viewBox="0 0 24 24" fill="white">
-        <path d="M7.75 2C4.578 2 2 4.578 2 7.75v8.5C2 19.422 
-        4.578 22 7.75 22h8.5C19.422 22 22 19.422 22 
-        16.25v-8.5C22 4.578 19.422 2 16.25 
-        2h-8.5zm0 2h8.5C18.318 4 20 5.682 20 
-        7.75v8.5c0 2.068-1.682 3.75-3.75 
-        3.75h-8.5C5.682 20 4 18.318 4 
-        16.25v-8.5C4 5.682 5.682 4 7.75 
-        4zm8.75 1a1.25 1.25 0 100 2.5 1.25 
-        1.25 0 000-2.5zM12 7a5 5 0 100 10 5 5 0 
-        000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
-    </svg>
-</a>
- 
+<div id="toast"></div>
 
+<div class="modal-overlay" id="checkoutModal">
+  <div class="checkout-modal">
+    <div id="step-form">
+      <div class="checkout-header">
+        <div><div class="checkout-label">Almost there!</div><h2 class="checkout-title">Delivery Details</h2></div>
+        <button class="checkout-close-btn" onclick="closeCheckout()">✕</button>
+      </div>
+      <div class="checkout-body">
+        <div class="order-mini-summary" id="orderMiniSummary"></div>
+        <div class="form-grid">
+          <div class="field full">
+            <label class="field-label">Full Name <span class="req">*</span></label>
+            <div class="field-wrap"><span class="field-icon">👤</span><input id="f-name" type="text" class="field-input" placeholder="e.g. Ahmed Khan" maxlength="60"/></div>
+            <div class="field-error" id="err-name"></div>
+          </div>
+          <div class="field full">
+            <label class="field-label">Email Address <span class="req">*</span></label>
+            <div class="field-wrap"><span class="field-icon">✉️</span><input id="f-email" type="email" class="field-input" placeholder="e.g. ahmed@gmail.com"/></div>
+            <div class="field-error" id="err-email"></div>
+          </div>
+          <div class="field full">
+            <label class="field-label">Phone Number <span class="req">*</span></label>
+            <div class="field-wrap"><span class="field-icon">📞</span><span class="field-prefix">+92</span><input id="f-phone" type="tel" class="field-input has-prefix" placeholder="3XXXXXXXXX" maxlength="11"/></div>
+            <!-- <div class="field-hint">Pakistani number only — 11 digits starting with 03</div> -->
+            <div class="field-error" id="err-phone"></div>
+          </div>
+          <div class="field half">
+            <label class="field-label">City <span class="req">*</span></label>
+            <div class="field-wrap"><span class="field-icon">🏙️</span><input type="text" class="field-input" value="Karachi" readonly style="cursor:not-allowed;background:#f5ede8;"/></div>
+          </div>
+          <div class="field half">
+            <label class="field-label">Area <span class="req">*</span></label>
+            <div class="field-wrap select-wrap"><span class="field-icon">📍</span>
+              <select id="f-area" class="field-input field-select">
+                <option value="">— Select Area —</option>
+                <option>Tariqroad</option><option>Defence phase 1 / phase 2</option>
+                <option>All over mehmodabad</option><option>P.E.C.H.S</option>
+                <option>Saddar</option><option>Bahadurabad</option>
+                <option>Gulshan-e-Iqbal</option>
+                <!-- <option>Malir</option> -->
+                <!-- <option>Orangi Town</option><option>Landhi</option> -->
+              </select>
+              <span class="select-arrow">▾</span>
+            </div>
+            <div class="field-error" id="err-area"></div>
+          </div>
+          <div class="field full">
+            <label class="field-label">Full Address <span class="req">*</span></label>
+            <div class="field-wrap"><span class="field-icon">🏠</span><input id="f-address" type="text" class="field-input" placeholder="e.g. House 12, Street 5, Block B" maxlength="120"/></div>
+            <div class="field-error" id="err-address"></div>
+          </div>
+          <div class="field full">
+            <label class="field-label">Zipcode <span class="opt">(Optional)</span></label>
+            <div class="field-wrap"><span class="field-icon">🔢</span><input id="f-zip" type="text" class="field-input" placeholder="e.g. 75500" maxlength="10"/></div>
+          </div>
+        </div>
+      </div>
+      <div class="checkout-footer">
+        <button class="btn-cancel" onclick="closeCheckout()">Cancel</button>
+        <button class="btn-confirm" onclick="submitOrder()">Confirm Order &nbsp;✅</button>
+      </div>
+    </div>
 
+    <div id="step-success" style="display:none;">
+      <div class="success-screen">
+        <div class="success-anim">🎉</div>
+        <h2 class="success-title">Order Confirmed!</h2>
+        <p class="success-sub" id="successName"></p>
+        <div class="success-card"><div id="successItems"></div></div>
+        <div class="delivery-notice">
+          <div class="delivery-icon">🛵</div>
+          <p>We will deliver this order in <strong>30 – 45 minutes</strong><br>and we will contact you on your <strong>phone number</strong> and on <strong>WhatsApp</strong>.</p>
+        </div>
+        <button class="btn-done" onclick="closeModal()">Back to Menu 🏠</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-  </footer>
+<footer>&copy; 2026 <strong>Sandwich</strong> — Taste the Street. Crafted with ❤️ in Karachi.
+<p>For any issue contact on our instagram</p>
+</footer>
 
 <script>
-  emailjs.init('RAZZ9Shc4dLc7U_C4');
+emailjs.init('RAZZ9Shc4dLc7U_C4');
 
   // ===== TIMING CHECK =====
   function checkTiming() {
     const now = new Date();
     const pk = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Karachi" }));
     const hour = pk.getHours();
-    const isOpen = hour >= 13 || hour < 2;
-    document.getElementById('timingBanner').style.display = !isOpen ? 'flex' : 'none';
+    const min = pk.getMinutes();
+    // const isOpen = (hour === 13) || (hour === 14 && min === 0);
+    // SAHI — 1:00 PM (13) se 2:00 AM (2) tak
+const isOpen = hour >= 13 || hour < 2;
+    const banner = document.getElementById('timingBanner');
+    banner.style.display = !isOpen ? 'flex' : 'none';
   }
   checkTiming();
   setInterval(checkTiming, 60000);
@@ -620,50 +761,87 @@
   const cart = {};
 
   // ===== VOUCHER SYSTEM =====
-  const VALID_VOUCHERS = { 'EID20': { discount: 20, minOrder: 1000 } };
+  const VALID_VOUCHERS = {
+    'EID20': { discount: 20, minOrder: 1000 }
+  };
   let appliedVoucher = null;
 
   function applyVoucher() {
     const input = document.getElementById('voucherInput');
     const code = input.value.trim().toUpperCase();
-    if (!code) { showVoucherMsg('Please enter a voucher code.', 'error-msg'); input.classList.add('error'); return; }
+
+    if (!code) {
+      showVoucherMsg('Please enter a voucher code.', 'error-msg');
+      input.classList.add('error');
+      return;
+    }
+
     const { subtotal } = getCartTotals();
     const voucher = VALID_VOUCHERS[code];
+
     if (!voucher) {
       showVoucherMsg('❌ Invalid voucher code.', 'error-msg');
-      input.classList.remove('applied'); input.classList.add('error');
-      appliedVoucher = null; renderCart(); return;
+      input.classList.remove('applied');
+      input.classList.add('error');
+      appliedVoucher = null;
+      renderCart();
+      return;
     }
+
     if (subtotal < voucher.minOrder) {
-      showVoucherMsg(`❌ Minimum order Rs ${voucher.minOrder.toLocaleString()} chahiye.`, 'error-msg');
-      input.classList.remove('applied'); input.classList.add('error');
-      appliedVoucher = null; renderCart(); return;
+      showVoucherMsg(
+        `❌ Minimum order Rs ${voucher.minOrder.toLocaleString()} chahiye is voucher ke liye.`,
+        'error-msg'
+      );
+      input.classList.remove('applied');
+      input.classList.add('error');
+      appliedVoucher = null;
+      renderCart();
+      return;
     }
+
+    // SUCCESS
     appliedVoucher = { ...voucher, code };
-    input.classList.remove('error'); input.classList.add('applied');
+    input.classList.remove('error');
+    input.classList.add('applied');
     input.readOnly = true;
     document.getElementById('voucherApplyBtn').disabled = true;
-    showVoucherMsg(`✅ Voucher apply ho gaya! 🎉 <button class="voucher-remove-btn" onclick="removeVoucher()">Remove</button>`, 'success');
+
+    // const discountAmt = Math.round(subtotal * voucher.discount / 100);
+    // showVoucherMsg(
+    //   `✅ Voucher apply ho gaya! Aap ne Rs ${discountAmt.toLocaleString()} bachaye 🎉 <button class="voucher-remove-btn" onclick="removeVoucher()">Remove</button>`,
+    //   'success'
+    // );
+    showVoucherMsg(
+  `✅ Voucher apply ho gaya! 🎉 <button class="voucher-remove-btn" onclick="removeVoucher()">Remove</button>`,
+  'success'
+);
     renderCart();
   }
 
   function removeVoucher() {
     appliedVoucher = null;
     const input = document.getElementById('voucherInput');
-    input.value = ''; input.readOnly = false;
+    input.value = '';
+    input.readOnly = false;
     input.classList.remove('applied', 'error');
     document.getElementById('voucherApplyBtn').disabled = false;
-    showVoucherMsg('', ''); renderCart();
+    showVoucherMsg('', '');
+    renderCart();
   }
 
   function showVoucherMsg(html, type) {
     const msg = document.getElementById('voucherMsg');
-    msg.innerHTML = html; msg.className = 'voucher-msg ' + type;
+    msg.innerHTML = html;
+    msg.className = 'voucher-msg ' + type;
   }
 
   function getVoucherDiscount(subtotal) {
     if (!appliedVoucher) return 0;
-    if (subtotal < appliedVoucher.minOrder) { removeVoucher(); return 0; }
+    if (subtotal < appliedVoucher.minOrder) {
+      removeVoucher();
+      return 0;
+    }
     return Math.round(subtotal * appliedVoucher.discount / 100);
   }
 
@@ -705,17 +883,23 @@
   // ===== RENDER CART =====
   function renderCart() {
     const { ids, subtotal, discount, delivery, total, totalItems } = getCartTotals();
+
     document.getElementById('cartBadge').textContent = totalItems + (totalItems === 1 ? ' item' : ' items');
     document.getElementById('navCartCount').textContent = totalItems;
+
     const isEmpty = ids.length === 0;
     document.getElementById('cartEmpty').style.display = isEmpty ? 'block' : 'none';
     document.getElementById('cartItemsContainer').style.display = isEmpty ? 'none' : 'block';
+
     const mBar = document.getElementById('mobileCartBar');
     mBar.style.display = totalItems > 0 ? 'flex' : 'none';
     document.getElementById('mobileCartCount').textContent = totalItems;
     document.getElementById('mobileCartTotal').textContent = 'Rs ' + total.toLocaleString();
+
+    // Voucher section show/hide
     const vSection = document.getElementById('voucherSection');
     if (vSection) vSection.style.display = isEmpty ? 'none' : 'block';
+
     if (!isEmpty) {
       document.getElementById('cartItems').innerHTML = ids.map(id => `
         <div class="cart-item">
@@ -731,20 +915,26 @@
           </div>
           <button class="cart-item-remove" onclick="removeFromCart('${id}')" title="Delete">🗑️</button>
         </div>`).join('');
+
       document.getElementById('subtotal').textContent = 'Rs ' + subtotal.toLocaleString();
       document.getElementById('deliveryVal').textContent = delivery === 0 ? '🎉 Free!' : 'Rs 140';
       document.getElementById('freeDeliveryMsg').style.display = delivery === 0 ? 'block' : 'none';
       document.getElementById('totalVal').textContent = 'Rs ' + total.toLocaleString();
+
+      // Discount row show/hide
       const discRow = document.getElementById('discountRow');
       if (discRow) {
         discRow.style.display = discount > 0 ? 'flex' : 'none';
         document.getElementById('discountVal').textContent = '− Rs ' + discount.toLocaleString();
-        const vMsg = document.getElementById('voucherMsg');
-        if (vMsg && appliedVoucher) {
-          vMsg.innerHTML = `<span style="color:var(--red); font-weight:700;">✅ Voucher applied!</span> Aap ne Rs ${discount.toLocaleString()} bachaye 🎉 <button class="voucher-remove-btn" onclick="removeVoucher()">Remove</button>`;
-        }
+  const vMsg = document.getElementById('voucherMsg');
+if (vMsg && appliedVoucher) {
+ 
+  // vMsg.innerHTML = `✅ Voucher applied! Aap ne Rs ${discount.toLocaleString()} bachaye 🎉 <button class="voucher-remove-btn" onclick="removeVoucher()">Remove</button>`;
+vMsg.innerHTML = `<span style="color:var(--red); font-weight:700;">✅ Voucher applied!</span> Aap ne Rs ${discount.toLocaleString()} bachaye 🎉 <button class="voucher-remove-btn" onclick="removeVoucher()">Remove</button>`;
+}
       }
     }
+
     updateFreeDeliveryHints();
   }
 
@@ -763,8 +953,8 @@
       const hint = document.getElementById('hint-' + id);
       if (!hint) return;
       if (subtotal === 0) { hint.textContent = '🛵 Spend Rs 1,500 to get FREE delivery!'; hint.style.color = 'var(--red)'; hint.style.background = '#fff5f5'; hint.style.borderColor = 'rgba(192,57,43,.25)'; }
-      else if (remaining > 0) { hint.textContent = `🛵 Rs ${remaining.toLocaleString()} more for FREE delivery!`; hint.style.color = 'var(--red)'; hint.style.background = '#fff5f5'; hint.style.borderColor = 'rgba(192,57,43,.25)'; }
-      else { hint.textContent = `🎉 FREE delivery unlocked!`; hint.style.color = 'green'; hint.style.background = '#f0fff4'; hint.style.borderColor = 'rgba(39,174,96,.3)'; }
+      else if (remaining > 0) { hint.textContent = `🛵 You need Rs ${remaining.toLocaleString()} more for FREE delivery!`; hint.style.color = 'var(--red)'; hint.style.background = '#fff5f5'; hint.style.borderColor = 'rgba(192,57,43,.25)'; }
+      else { hint.textContent = `🎉 You've unlocked FREE delivery!`; hint.style.color = 'green'; hint.style.background = '#f0fff4'; hint.style.borderColor = 'rgba(39,174,96,.3)'; }
     });
     const cartHint = document.getElementById('cartFreeDelHint');
     if (cartHint) {
@@ -779,26 +969,40 @@
     const now = new Date();
     const pk = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Karachi" }));
     const hour = pk.getHours();
-    const isOpen = hour >= 13 || hour < 2;
-    if (!isOpen) { showToast('❌ Hum abhi closed hain! Timing: 1PM – 2AM Pakistan Time'); return; }
+    const min = pk.getMinutes();
+    // const isOpen = (hour === 13) || (hour === 14 && min === 0);
+    // SAHI — 1:00 PM (13) se 2:00 AM (2) tak
+const isOpen = hour >= 13 || hour < 2;
+    // if (!isOpen) { showToast('❌ Hum abhi closed hain! Timing: 1PM – 2PM Pakistan Time'); return; }
+
     const { ids } = getCartTotals();
     if (ids.length === 0) { showToast('Add something to your cart first!'); return; }
+
     document.getElementById('step-form').style.display = 'block';
     document.getElementById('step-success').style.display = 'none';
+
     const { subtotal, discount, delivery, total } = getCartTotals();
+
     let summaryHTML = ids.map(id =>
       `<div class="mini-item"><span>${PRODUCTS[id].emoji} ${PRODUCTS[id].name} × ${cart[id]}</span><span>Rs ${(cart[id] * PRODUCTS[id].price).toLocaleString()}</span></div>`
     ).join('');
-    if (discount > 0) summaryHTML += `<div class="mini-item discount-line"><span>🎉 Discount (EID20 - 20%)</span><span>− Rs ${discount.toLocaleString()}</span></div>`;
+
+    if (discount > 0) {
+      summaryHTML += `<div class="mini-item discount-line"><span>🎉 Discount (EID20 - 20%)</span><span>− Rs ${discount.toLocaleString()}</span></div>`;
+    }
+
     summaryHTML += `<div class="mini-item"><span>Delivery</span><span>${delivery === 0 ? '🎉 Free!' : 'Rs ' + delivery}</span></div>`;
     summaryHTML += `<div class="mini-total"><span>Total</span><span>Rs ${total.toLocaleString()}</span></div>`;
+
     document.getElementById('orderMiniSummary').innerHTML = summaryHTML;
+
     ['name','email','phone','area','address'].forEach(f => {
       setError(f, '');
       const el = document.getElementById('f-' + f);
       const wrap = el && el.closest('.field-wrap');
       if (wrap) wrap.classList.remove('error-border');
     });
+
     document.getElementById('checkoutModal').classList.add('show');
     document.body.style.overflow = 'hidden';
   }
@@ -824,57 +1028,67 @@
     const area = document.getElementById('f-area').value;
     const address = document.getElementById('f-address').value.trim();
     let valid = true;
+
     if (!name) { setError('name', 'Full name is required.'); valid = false; } else setError('name', '');
     if (!email) { setError('email', 'Email address is required.'); valid = false; }
     else if (!validateEmail(email)) { setError('email', 'Please enter a valid email address.'); valid = false; }
     else setError('email', '');
     if (!phone) { setError('phone', 'Phone number is required.'); valid = false; }
-    else if (!validatePhone(phone)) { setError('phone', 'Enter valid Pakistani number (10 digits, starts with 3).'); valid = false; }
+    else if (!validatePhone(phone)) { setError('phone', 'Enter a valid Pakistani number (10 digits, starts with 3).'); valid = false; }
     else setError('phone', '');
     if (!area) { setError('area', 'Please select a delivery area.'); valid = false; } else setError('area', '');
     if (!address) { setError('address', 'Full address is required.'); valid = false; } else setError('address', '');
     if (!valid) return;
 
+    // const { ids, discount, delivery, total } = getCartTotals();
     const { ids, subtotal, discount, delivery, total } = getCartTotals();
+
     document.getElementById('successName').textContent = `Thank you, ${name}! Your order is on its way 🛵`;
 
     let successHTML = ids.map(id =>
       `<div class="s-item"><span>${PRODUCTS[id].emoji} ${PRODUCTS[id].name} × ${cart[id]}</span><span>Rs ${(cart[id] * PRODUCTS[id].price).toLocaleString()}</span></div>`
     ).join('');
-    if (discount > 0) successHTML += `<div class="s-item discount-row"><span>🎉 Discount (EID20 - 20%)</span><span>− Rs ${discount.toLocaleString()}</span></div>`;
+
+    if (discount > 0) {
+      successHTML += `<div class="s-item discount-row"><span>🎉 Discount (EID20 - 20%)</span><span>− Rs ${discount.toLocaleString()}</span></div>`;
+    }
+
     successHTML += `<div class="s-item"><span>Delivery Fee</span><span>${delivery === 0 ? '🎉 Free!' : 'Rs 140'}</span></div>`;
     successHTML += `<div class="s-item total-row"><span>Total Paid</span><span>Rs ${total.toLocaleString()}</span></div>`;
+const orderDetails = ids.map(id =>
+  `${PRODUCTS[id].emoji} ${PRODUCTS[id].name} x${cart[id]} = Rs ${(cart[id] * PRODUCTS[id].price).toLocaleString()}`
+).join('\n');
 
-    const orderDetails = ids.map(id =>
-      `${PRODUCTS[id].emoji} ${PRODUCTS[id].name} x${cart[id]} = Rs ${(cart[id] * PRODUCTS[id].price).toLocaleString()}`
-    ).join('\n');
+emailjs.send('service_9tknvjs', 'template_c1fk7fh', {
+  customer_name: name,
+  customer_email: email,
+  customer_phone: '+92' + phone,
+  customer_area: area,
+  customer_address: address,
+  order_items: orderDetails,
+  // subtotal: 'Rs ' + subtotal.toLocaleString(),
+subtotal: 'Rs ' + subtotal,
+  discount: discount > 0 ? '- Rs ' + discount.toLocaleString() : 'None',
+  delivery_fee: delivery === 0 ? 'Free' : 'Rs 140',
+  total: 'Rs ' + total.toLocaleString(),
+});
 
-    // EmailJS
-    emailjs.send('service_9tknvjs', 'template_c1fk7fh', {
-      customer_name: name,
-      customer_email: email,
-      customer_phone: '+92' + phone,
-      customer_area: area,
-      customer_address: address,
-      order_items: orderDetails,
-      subtotal: 'Rs ' + subtotal.toLocaleString(),
-      discount: discount > 0 ? '- Rs ' + discount.toLocaleString() : 'None',
-      delivery_fee: delivery === 0 ? 'Free' : 'Rs 140',
-      total: 'Rs ' + total.toLocaleString(),
-    });
+fetch('https://script.google.com/macros/s/AKfycbxgLyg_r_ShYJrWO98Ltg4MM83C4KkmREEGaDBCFsJAV9q5JH0AtKjhse46UNjJr-clzQ/exec', {
+  method: 'POST',
+  body: JSON.stringify({
+    name: name,
+    email: email,
+    phone: '+92' + phone,
+    area: area,
+    address: address,
+    items: orderDetails,
+    subtotal: 'Rs ' + subtotal,
+    discount: discount > 0 ? '- Rs ' + discount.toLocaleString() : 'None',
+    delivery: delivery === 0 ? 'Free' : 'Rs 140',
+    total: 'Rs ' + total.toLocaleString()
+  })
+});
 
-    // Google Sheets
-    fetch('https://script.google.com/macros/s/AKfycbxgLyg_r_ShYJrWO98Ltg4MM83C4KkmREEGaDBCFsJAV9q5JH0AtKjhse46UNjJr-clzQ/exec', {
-      method: 'POST',
-      body: JSON.stringify({
-        name: name, email: email, phone: '+92' + phone,
-        area: area, address: address, items: orderDetails,
-        subtotal: 'Rs ' + subtotal.toLocaleString(),
-        discount: discount > 0 ? '- Rs ' + discount.toLocaleString() : 'None',
-        delivery: delivery === 0 ? 'Free' : 'Rs 140',
-        total: 'Rs ' + total.toLocaleString()
-      })
-    });
 
     document.getElementById('successItems').innerHTML = successHTML;
     document.getElementById('step-form').style.display = 'none';
@@ -886,7 +1100,8 @@
     document.getElementById('checkoutModal').classList.remove('show');
     document.body.style.overflow = '';
     Object.keys(cart).forEach(k => delete cart[k]);
-    removeVoucher(); renderCart();
+    removeVoucher();
+    renderCart();
     ['f-name','f-email','f-phone','f-area','f-address','f-zip'].forEach(id => {
       const el = document.getElementById(id);
       if (el && !el.readOnly) el.value = '';
@@ -902,7 +1117,7 @@
     toastTimer = setTimeout(() => el.classList.remove('show'), 2400);
   }
 
-  function scrollToCart() { document.getElementById('cartSidebar').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  function scrollToCart() { document.getElementById('cartSidebar').scrollIntoView({ behavior:'smooth', block: 'start' }); }
 
   document.getElementById('f-phone').addEventListener('input', function() {
     this.value = this.value.replace(/\D/g, '').slice(0, 11);
@@ -910,23 +1125,39 @@
 
   updateFreeDeliveryHints();
 
+
   // ===== IMAGE SLIDER =====
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.dot');
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
 
-  function goToSlide(n) {
-    slides[currentSlide].classList.remove('active');
-    dots[currentSlide].classList.remove('active');
-    currentSlide = n;
-    slides[currentSlide].classList.add('active');
-    dots[currentSlide].classList.add('active');
-    document.getElementById('heroInner').style.opacity = n === 0 ? '1' : '0';
-  }
+// function goToSlide(n) {
+//   slides[currentSlide].classList.remove('active');
+//   dots[currentSlide].classList.remove('active');
+//   currentSlide = n;
+//   slides[currentSlide].classList.add('active');
+//   dots[currentSlide].classList.add('active');
+//   document.querySelector('.hero-inner').style.opacity = n === 0 ? '1' : '0';
+// }
 
-  setInterval(() => {
-    goToSlide((currentSlide + 1) % slides.length);
-  }, 3000);
+// setInterval(() => {
+//   goToSlide((currentSlide + 1) % slides.length);
+// }, 3000);
+
+function goToSlide(n) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = n;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+  document.querySelector('.hero-inner').style.opacity = n === 0 ? '1' : '0';
+}
+
+setInterval(() => {
+  const isMobile = window.innerWidth <= 1024;
+  const maxSlide = isMobile ? 2 : slides.length;
+  goToSlide((currentSlide + 1) % maxSlide);
+}, 3000);
 
 </script>
 </body>
