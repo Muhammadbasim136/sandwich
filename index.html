@@ -4,6 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sandwich — Taste the Street</title>
+<meta name="description" content="Sandwich Karachi - Best Chicken Shawarma & Signature Sandwich delivered to your door. Fresh, handcrafted street food. Order online now!"/>
+<meta name="keywords" content="sandwich karachi, shawarma karachi, chicken shawarma, food delivery karachi, best sandwich karachi"/>
+<meta name="author" content="Sandwich"/>
+<meta name="robots" content="index, follow"/>
+
+<meta property="og:title" content="Sandwich — Taste the Street"/>
+<meta property="og:description" content="Best Chicken Shawarma & Signature Sandwich in Karachi. Order fresh food online!"/>
+<meta property="og:url" content="https://sandwich.online"/>
+<meta property="og:type" content="website"/>
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://sandwich.online"/>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -162,7 +175,7 @@
     .qty-btn { width: 38px; height: 38px; border: none; background: transparent; font-size: 1.2rem; font-weight: 700; color: var(--red); cursor: pointer; transition: background .2s, color .2s; display: flex; align-items: center; justify-content: center; }
     .qty-btn:hover { background: var(--red); color: #fff; }
     .qty-val { width: 36px; text-align: center; font-size: .95rem; font-weight: 600; color: var(--dark); }
-    .add-btn { flex: 1; background: linear-gradient(135deg, var(--red), var(--orange)); color: #fff; border: none; cursor: pointer; border-radius: 50px; height: 42px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: .88rem; letter-spacing: .5px; transition: opacity .2s, transform .2s, box-shadow .2s; box-shadow: 0 4px 16px rgba(192,57,43,.3); min-width: 130px; }
+    .add-btn { flex: 1; background: linear-gradient(135deg, var(--red), var(--orange)); color: #fff; border: none; cursor: pointer; border-radius: 50px; height: 42px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: .88rem; letter-spacing: .5px; transition: opacity .2s, transform .2s, box-shadow .2s; box-shadow: 0 4px 16px rgba(192,57,43,.3); min-width: 0; }
     .add-btn:hover { opacity: .92; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(192,57,43,.4); }
     .add-btn:active { transform: scale(.97); }
     .add-btn.added { background: linear-gradient(135deg, #27ae60, #2ecc71); box-shadow: 0 4px 16px rgba(39,174,96,.35); }
@@ -178,7 +191,8 @@
     .cart-empty p { font-size: .88rem; color: var(--gray); line-height: 1.6; }
     .cart-items { padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }
     .cart-item { display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--cream); border-radius: 12px; animation: slideIn .3s ease; }
-    @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+    /* @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } } */
+  @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     .cart-item-emoji { font-size: 1.6rem; flex-shrink: 0; }
     .cart-item-info { flex: 1; min-width: 0; }
     .cart-item-name { font-size: .85rem; font-weight: 600; color: var(--dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -419,6 +433,37 @@
 body {
   overflow-x: hidden;
 }
+
+
+
+html {
+  overflow-x: hidden;
+}
+
+.hero {
+  max-width: 100vw;
+  overflow: hidden;
+}
+@media(max-width: 900px) {
+  .cart-sidebar {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .cart-summary {
+    overflow-x: hidden;
+  }
+
+  .cart-item {
+    max-width: 100%;
+  }
+
+  .voucher-row {
+    max-width: 100%;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -663,7 +708,7 @@ body {
   <footer>
     &copy; 2026 <strong>Sandwich</strong> — Taste the Street. Crafted with ❤️ in Karachi.
     <p>For any issue contact on our Instagram</p>
- <a href="https://instagram.com/basim.1356" target="_blank" class="insta-btn">
+ <a href="https://instagram.com/sandwich.pakistan" target="_blank" class="insta-btn">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
     viewBox="0 0 24 24" fill="white">
         <path d="M7.75 2C4.578 2 2 4.578 2 7.75v8.5C2 19.422 
